@@ -1,4 +1,5 @@
-This is an addon starter template for the [Ionic Framework](http://ionicframework.com/).
+This app was created with the starter template for the [Ionic Framework](http://ionicframework.com/).
+What follows is the README for that template:
 
 ## How to use this template
 

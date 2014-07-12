@@ -7,3 +7,13 @@
 2014-07-04 13:59:34.080 HelloCordova[21287:70b] Resetting plugins due to page load.
 2014-07-04 13:59:34.531 HelloCordova[21287:70b] Finished load of: file:///Users/atthorn/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/0BE7F1B7-5555-4A95-979E-45539FE89FCC/HelloCordova.app/www/index.html#/app/playlists
 2014-07-04 13:59:57.487 HelloCordova[21287:70b] Doing login [object Object]
+2014-07-04 16:46:07.545 HelloCordova[21287:70b] Doing login [object Object]
+2014-07-04 16:46:07.624 HelloCordova[21287:70b] THREAD WARNING: ['Console'] took '79.052002' ms. Plugin should use a background thread.
+2014-07-07 11:30:51.688 HelloCordova[24730:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-07 11:30:51.868 HelloCordova[24730:70b] Unlimited access to network resources
+2014-07-07 11:30:52.462 HelloCordova[24730:70b] [CDVTimer][keyboard] 0.055969ms
+2014-07-07 11:30:52.462 HelloCordova[24730:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-07 11:30:52.463 HelloCordova[24730:70b] [CDVTimer][statusbar] 0.258029ms
+2014-07-07 11:30:52.463 HelloCordova[24730:70b] [CDVTimer][TotalPluginStartup] 0.782013ms
+2014-07-07 11:30:53.754 HelloCordova[24730:70b] Resetting plugins due to page load.
+2014-07-07 11:30:54.666 HelloCordova[24730:70b] Finished load of: file:///Users/atthorn/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/0BE7F1B7-5555-4A95-979E-45539FE89FCC/HelloCordova.app/www/index.html#/app/flights

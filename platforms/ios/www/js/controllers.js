@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('flight-sequence.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppController', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -33,8 +33,11 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
+.controller('FlightsController', function($scope, $http) {
+  $http.get('../data/flights.xml').then(function(response) {
+    alert(response.toString())
+  });
+  $scope.flights = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
     { title: 'Dubstep', id: 3 },
@@ -44,5 +47,5 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('FlightController', function($scope, $stateParams) {
 })

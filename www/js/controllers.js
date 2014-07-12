@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('flight-sequence.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppController', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -33,16 +33,20 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('FlightsController', function($scope, $http) {
+  $http.get('data/flights.xml').then(function(response) {
+    
+    // transform XML response into JSON
+    var x2js = new X2JS();
+    $scope.flights = x2js.xml_str2json(response.data).MIDAS.Flights.Flight;
+
+    // create title and id attributes for each flight object
+    angular.forEach($scope.flights, function(value, key) {
+      value.title = value.FltName.replace(/"/g, "");  // remove double-quotes
+      value.id = key;
+    });
+  });
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('FlightController', function($scope, $stateParams) {
 })
