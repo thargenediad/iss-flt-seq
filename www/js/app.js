@@ -39,11 +39,11 @@ angular.module('flight-sequence', ['ionic', 'flight-sequence.controllers'])
       }
     })
 
-    .state('app.browse', {
-      url: "/browse",
+    .state('app.logout', {
+      url: "/logout",
       views: {
         'menuContent' :{
-          templateUrl: "templates/browse.html"
+          templateUrl: "templates/logout.html"
         }
       }
     })

@@ -26,10 +26,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <CIMA/CIMA.h>
 #import <Cordova/CDVViewController.h>
 
-@interface AppDelegate : NSObject <UIApplicationDelegate>{}
+@interface AppDelegate : NSObject <UIApplicationDelegate, CIMASmapServiceDelegate>{}
 
 // invoke string is passed to your app on launch, this is only valid if you
 // edit HelloCordova-Info.plist to add a protocol

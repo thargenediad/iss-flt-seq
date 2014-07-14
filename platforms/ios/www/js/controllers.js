@@ -5,46 +5,44 @@ angular.module('flight-sequence.controllers', [])
   $scope.loginData = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('templates/logout.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
   // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
+  $scope.closeLogout = function() {
     $scope.modal.hide();
   },
 
   // Open the login modal
-  $scope.login = function() {
+  $scope.logout= function() {
     $scope.modal.show();
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+  $scope.doLogout = function() {
+    console.log('Doing logout');
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+    $scope.closeLogout();
+    Smap.signOut();
   };
 })
 
 .controller('FlightsController', function($scope, $http) {
-  $http.get('../data/flights.xml').then(function(response) {
-    alert(response.toString())
+  $http.get('data/flights.xml').then(function(response) {
+
+    // transform XML response into JSON
+    var x2js = new X2JS();
+    $scope.flights = x2js.xml_str2json(response.data).MIDAS.Flights.Flight;
+
+    // create title and id attributes for each flight object
+    angular.forEach($scope.flights, function(value, key) {
+      value.title = value.FltName.replace(/"/g, "");  // remove double-quotes
+      value.id = key;
+    });
   });
-  $scope.flights = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
 })
 
 .controller('FlightController', function($scope, $stateParams) {

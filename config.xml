@@ -17,6 +17,10 @@
          to be sent to iCloud. Note: enabling this could result in Apple rejecting your app.
     -->
     <preference name="BackupWebStorage" value="none" />
+    
+    <feature name="SMAP">
+        <param name="ios-package" value="SMAPPlugin" />
+    </feature>
 
     <feature name="StatusBar">
       <param name="ios-package" value="CDVStatusBar" onload="true" />

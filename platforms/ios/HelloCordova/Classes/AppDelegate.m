@@ -27,12 +27,48 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-
+#import <CIMA/CIMA.h>
 #import <Cordova/CDVPlugin.h>
 
 @implementation AppDelegate
 
 @synthesize window, viewController;
+
+//	DEVELOPMENT_BUILD is now defined as 1 in the Preprocessor Macros section
+//	of the Debug build settings and defined as 0 in the Ad Hoc and Release build settings
+//	so generally you won't need to change this #define when switching between build types
+#ifndef DEVELOPMENT_BUILD
+#define DEVELOPMENT_BUILD 1
+#endif
+
+- (void) cimaSetup
+{
+    CIMAService *cimaService = [CIMAService initializeServiceWithApplicationId:@"Test"
+#if DEVELOPMENT_BUILD
+                                                              iosAppIdentifier:@"428KZZ73BQ"];   // Development
+#else
+iosAppIdentifier:@"YPPFQ8QF2F"];   // Distribution
+#endif
+    
+    cimaService.logo = [UIImage imageNamed:@"icon.png"];
+    
+    // Optional
+    cimaService.buildType = CIMABuildRelease;
+    
+    cimaService.environmentPassword = @"cima";
+    cimaService.logLevel = CIMALogLevelWarn;
+    
+    cimaService.requiresAuthentication = YES;
+    cimaService.allowsSavedPassword    = YES;
+    
+    cimaService.doesShowProgressDialog = NO;
+    
+#if DEVELOPMENT_BUILD
+    cimaService.logLevel     = CIMALogLevelInfo;
+    cimaService.logToConsole = YES;
+#endif
+}
+
 
 - (id)init
 {
@@ -63,6 +99,7 @@
  */
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
+    [self cimaSetup];
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
 
 #if __has_feature(objc_arc)
@@ -87,6 +124,18 @@
 
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    CIMAService *cimaService = [CIMAService sharedInstance];
+#if 0
+    CIMARequest *request = [CIMARequest requestWithUrl:@"/info" method:CIMATransportMethodHttpGet headers:nil data:nil];
+    
+	[cimaService loginUserWithRequest:request
+                             delegate:self
+                               object:nil];
+#else
+	[cimaService loginUser];
+#endif
+
 
     return YES;
 }
@@ -147,6 +196,24 @@
 - (void)applicationDidReceiveMemoryWarning:(UIApplication*)application
 {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
+}
+
+#pragma mark - CIMASmapServiceDelegate Methods
+
+- (void) smapServiceDidFinish:(CIMASmapMessageData*)smapMessageData
+{
+	//	This callback can be used for login initialization.
+    
+	//	Implementation varies with application needs and initialization.
+}
+
+- (void) smapServiceDidFail:(CIMASmapMessageData*)smapMessageData
+{
+	//	This callback can be used for any clean up that needs to be done.
+    
+	//	The CIMA/SMAP code should have already taken care of displaying
+	//	any alerts/errors/etc. prior to calling this method.
+	//	So typically you should not need to display an error to the user here.
 }
 
 @end
