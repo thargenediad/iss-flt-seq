@@ -1,11 +1,11 @@
-<ion-view title="Flights">
+<ion-view title="Increments">
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-list>
-      <ion-item ng-repeat="flight in flights" href="#/app/flights/{{flight.id}}">
-        {{flight.title}}
+      <ion-item ng-repeat="increment in increments" href="#/app/increments/{{increment.id}}">
+        {{increment.title}}
       </ion-item>
     </ion-list>
   </ion-content>

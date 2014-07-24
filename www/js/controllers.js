@@ -30,20 +30,20 @@ angular.module('flight-sequence.controllers', [])
   };
 })
 
-.controller('FlightsController', function($scope, $http) {
-  $http.get('data/flights.xml').then(function(response) {
+.controller('IncrementsController', function($scope, $http) {
+  $http.get('data/increments.xml').then(function(response) {
 
     // transform XML response into JSON
     var x2js = new X2JS();
-    $scope.flights = x2js.xml_str2json(response.data).MIDAS.Flights.Flight;
+    $scope.increments = x2js.xml_str2json(response.data).MIDAS.FlightIncrements.Increment;
 
     // create title and id attributes for each flight object
-    angular.forEach($scope.flights, function(value, key) {
-      value.title = value.FltName.replace(/"/g, "");  // remove double-quotes
+    angular.forEach($scope.increments, function(value, key) {
+      value.title = value.IncName.replace(/"/g, "");  // remove double-quotes
       value.id = key;
     });
   });
 })
 
-.controller('FlightController', function($scope, $stateParams) {
+.controller('IncrementController', function($scope, $stateParams) {
 })

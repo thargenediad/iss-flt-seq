@@ -47,26 +47,26 @@ angular.module('flight-sequence', ['ionic', 'flight-sequence.controllers'])
         }
       }
     })
-    .state('app.flights', {
-      url: "/flights",
+    .state('app.increments', {
+      url: "/increments",
       views: {
         'menuContent' :{
-          templateUrl: "templates/flights.html",
-          controller: 'FlightsController'
+          templateUrl: "templates/increments.html",
+          controller: 'IncrementsController'
         }
       }
     })
 
     .state('app.single', {
-      url: "/flights/:flightId",
+      url: "/increments/:incrementId",
       views: {
         'menuContent' :{
-          templateUrl: "templates/flight.html",
-          controller: 'FlightController'
+          templateUrl: "templates/increment.html",
+          controller: 'IncrementController'
         }
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/flights');
+  $urlRouterProvider.otherwise('/app/increments');
 });
 
