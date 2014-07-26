@@ -4,8 +4,8 @@
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-list>
-      <ion-item ng-repeat="increment in increments" href="#/app/increments/{{increment.id}}">
-        {{increment.title}}
+      <ion-item ng-repeat="increment in increments" href="#/app/increment/{{increment.id}}">
+        {{increment.IncName | noDoubleQuotes}}
       </ion-item>
     </ion-list>
   </ion-content>

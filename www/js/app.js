@@ -4,7 +4,7 @@
 // 'flight-sequence' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'flight-sequence.controllers' is found in controllers.js
-angular.module('flight-sequence', ['ionic', 'flight-sequence.controllers'])
+angular.module('flight-sequence', ['ionic', 'flight-sequence.controllers', 'flight-sequence.factories', 'flight-sequence.filters'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -57,8 +57,8 @@ angular.module('flight-sequence', ['ionic', 'flight-sequence.controllers'])
       }
     })
 
-    .state('app.single', {
-      url: "/increments/:incrementId",
+    .state('app.increment', {
+      url: "/increment/:incrementId",
       views: {
         'menuContent' :{
           templateUrl: "templates/increment.html",

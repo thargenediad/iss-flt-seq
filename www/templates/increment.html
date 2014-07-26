@@ -1,5 +1,9 @@
 <ion-view title="Increment">
   <ion-content class="has-header">
-    <h1>Increment</h1>
+    <ion-list>
+      <ion-item ng-repeat="flight in flights" href="#/app/flight/{{flight.FltName}}">
+        {{flight.FltName | noDoubleQuotes}}
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
