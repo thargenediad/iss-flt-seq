@@ -4,9 +4,7 @@ angular.module('flight-sequence.factories', [])
     var incrementsFactory = {};
 
     incrementsFactory.data = '';
-    console.log("In incrementsFactory.load");
     incrementsFactory.load = function() {
-      console.log("In incrementsFactory.load");
       this.data = $http.get('data/increments.xml').then(function (response) {
 
         // transform XML response into JSON

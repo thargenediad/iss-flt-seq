@@ -17,7 +17,6 @@ angular.module('flight-sequence', ['ionic', 'flight-sequence.controllers', 'flig
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    console.log("*** Device Ready! ***");
   });
 })
 
