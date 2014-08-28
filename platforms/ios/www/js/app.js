@@ -17,6 +17,7 @@ angular.module('flight-sequence', ['ionic', 'flight-sequence.controllers', 'flig
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    console.log("*** Device Ready! ***");
   });
 })
 
@@ -69,4 +70,8 @@ angular.module('flight-sequence', ['ionic', 'flight-sequence.controllers', 'flig
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/increments');
 });
+
+document.addEventListener("deviceready", function() {
+  angular.bootstrap(document, ['flight-sequence']);
+}, false);
 

@@ -70,3 +70,7 @@ angular.module('flight-sequence', ['ionic', 'flight-sequence.controllers', 'flig
   $urlRouterProvider.otherwise('/app/increments');
 });
 
+document.addEventListener("deviceready", function() {
+  angular.bootstrap(document, ['flight-sequence']);
+}, false);
+
